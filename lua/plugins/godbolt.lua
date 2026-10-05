@@ -1,7 +1,7 @@
 return {
   {
     "ahmedalhulaibi/godbolt.nvim",
-    commit = "6b57bb165b3f892d8ed354769eb30e35c3bcaedf",
+    commit = "0bf30af72ba7f3dc2fc63b5314db277a77e565b3",
     lazy = false,
     main = "godbolt",
     opts = {
@@ -11,12 +11,22 @@ return {
       {
         "<leader>cga",
         function() require("godbolt").godbolt_zig("asm") end,
-        desc = "Zig assembly (build-aware)",
+        desc = "Zig assembly pane",
       },
       {
         "<leader>cgi",
         function() require("godbolt").godbolt_zig("llvm") end,
-        desc = "Zig LLVM IR (build-aware)",
+        desc = "Zig LLVM IR pane",
+      },
+      {
+        "<leader>cgr",
+        function() require("godbolt.panes").refresh() end,
+        desc = "Refresh Zig panes (force)",
+      },
+      {
+        "<leader>cgq",
+        function() require("godbolt.panes").close() end,
+        desc = "Close Zig panes",
       },
     },
   },
