@@ -34,3 +34,23 @@ undo history, and other Neovim state are outside this repository.
 Do not commit credentials, private keys, environment files, or private host
 addresses. GitHub Actions scans Git history with Gitleaks on each push and pull
 request. A passing scan is not a guarantee that every secret is detectable.
+
+## Zig assembly and LLVM IR
+
+The pinned `godbolt.nvim` fork loads at startup. In a saved Zig file:
+
+- `<leader>cga` (Space, c, g, a): assembly.
+- `<leader>cgi` (Space, c, g, i): LLVM IR.
+
+Both keys save the current file and focus output mapped to the source cursor.
+Source/output highlights follow cursor movement. `<leader>ca` remains the
+standard code-action key.
+
+With `build.zig`, the plugin invokes its `godbolt-asm`/`godbolt-ir` steps. These
+must install `godbolt/output.s`/`godbolt/output.ll`; `zig-wc` provides both steps
+and pins Zig 0.16.0 through mise. Without `build.zig`, the keys fall back to
+standalone compilation. Project errors do not trigger that fallback.
+
+Default optimization is Debug. Set `zig_build_args = { "-Doptimize=ReleaseFast" }`
+in plugin options for optimized project output, or `zig_args = "-O ReleaseFast"`
+for standalone output. Optimized-away source lines may have no mapping.
