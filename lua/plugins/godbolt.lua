@@ -1,7 +1,7 @@
 return {
   {
     "ahmedalhulaibi/godbolt.nvim",
-    commit = "16137f43567584f819c213570411fdd938a67978",
+    commit = "7f3d1eeda6acfbcebaf9c38d33b43042eb15394a",
     lazy = false,
     main = "godbolt",
     opts = {
