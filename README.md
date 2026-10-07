@@ -54,3 +54,8 @@ standalone compilation. Project errors do not trigger that fallback.
 Default optimization is Debug. Set `zig_build_args = { "-Doptimize=ReleaseFast" }`
 in plugin options for optimized project output, or `zig_args = "-O ReleaseFast"`
 for standalone output. Optimized-away source lines may have no mapping.
+
+## Zig tests
+
+Lazy configures `ahmedalhulaibi/neotest-zig` and installs the Zig Treesitter
+parser. The adapter requires Zig 0.17; run tests through Neotest.
